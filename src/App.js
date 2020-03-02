@@ -36,7 +36,7 @@ class App extends Component {
 
     addBook() {
      
-      axios.post('http://royliao.pythonanywhere.com/snippets/',  this.state.newBookData,this.state.headerInfo).then((response) => {
+      axios.post('https://royliao.pythonanywhere.com/snippets/',  this.state.newBookData,this.state.headerInfo).then((response) => {
         let { books } = this.state;
   
         books.push(response.data);
@@ -58,7 +58,7 @@ class App extends Component {
     updateBook() {
       let { title, desc, year } = this.state.editBookData;
   
-      axios.put('http://royliao.pythonanywhere.com/snippets/' + this.state.editBookData.id+'/', {
+      axios.put('https://royliao.pythonanywhere.com/snippets/' + this.state.editBookData.id+'/', {
         title, desc, year
       }, this.state.headerInfo).then((response) => {
         this._refreshBooks();
@@ -70,13 +70,13 @@ class App extends Component {
     }
 
     deleteBook(id) {
-      axios.delete('http://royliao.pythonanywhere.com/snippets/' + id+'/').then((response) => {
+      axios.delete('https://royliao.pythonanywhere.com/snippets/' + id+'/').then((response) => {
         this._refreshBooks();
       });
     }
 
     UNSAFE_componentWillMount() {
-      axios.get('http://royliao.pythonanywhere.com/snippets/').then((response) => {
+      axios.get('https://royliao.pythonanywhere.com/snippets/').then((response) => {
       //  response.header("Access-Control-Allow-Origin", "*");
       //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
       this.setState({
@@ -86,7 +86,7 @@ class App extends Component {
     }
 
     _refreshBooks() {
-      axios.get('http://royliao.pythonanywhere.com/snippets/').then((response) => {
+      axios.get('https://royliao.pythonanywhere.com/snippets/').then((response) => {
         this.setState({
           books: response.data
         })
