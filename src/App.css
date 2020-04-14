@@ -32,6 +32,22 @@
   }
 }
 
-.App-link {
-  color: yellow;
+
+.nav-link[aria-current="page"] {
+  color: #000;
+  opacity: 1;
+ 
+}
+.active-link[aria-current="page"] {
+  color:yellow;
+  opacity: 1;
+ 
+}
+
+.active {
+  font-size: calc(10px + 2vmin);
+  background-color: chocolate;
+  color: red;
+  text-decoration: none;
+  opacity: 1;
 }

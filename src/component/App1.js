@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {  Input, FormGroup, Label, Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {  Input, FormGroup, Label, Table,Td, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 //import titles from './component/title';
 //import Example from './Example';
 import Titles from './titles';
@@ -25,19 +25,21 @@ class App extends Component {
     newseachkey:'',
     //results: [],
     books: [],
+    
     newBookData: {
       title: '',
       desc: '',
-      year:''
+      year:'',
+      image: null
       },
     headerInfo: {'content-type': 'application/json','Access-Control-Allow-Origin': "*" },
     newBookModal: false,
     
     editBookData: {
-      id: '',
       title: '',
       desc: '',
-      year:''
+      year:'',
+      image: null
       },
     editBookModal: false,
     mymessage:'',
@@ -87,20 +89,24 @@ class App extends Component {
         }});
       });
     }
-
-    editBook(id, title, desc, year) {
+    handleImageChange = (e) => {
       this.setState({
-        editBookData: { id, title, desc, year }, editBookModal: ! this.state.editBookModal
+        image: e.target.files[0]
+      })
+    };
+    editBook(id, title, desc, year,file) {
+      this.setState({
+        editBookData: { id, title, desc, year,file }, editBookModal: ! this.state.editBookModal
       } );
       
     }
-
+    
     updateBook() {
-      let {id, title, desc, year } = this.state.editBookData;
+      let {id, title, desc, year,file } = this.state.editBookData;
       //alert(this.state.editBookData.id);
       
       axios.put(`${API_URL}` + this.state.editBookData.id+'/', {id,
-        title, desc, year
+        title, desc, year,file
       }, this.state.headerInfo).then((response) => {
         this._refreshBooks();
 
@@ -204,13 +210,14 @@ class App extends Component {
           <tr key={book.id}>
             <td>{book.id}</td>
             
-            <td><a style={{color:"blue"}} onClick = {this.editBook.bind(this, book.id, book.title, book.desc, book.year)}>{book.title}</a></td>
-            <td>{book.desc}</td>
-            <td>{book.year}</td>
+            <td style={{ textAlign: 'left',color:"blue",hover:"green" }} baseFontStyle={{ fontFamily: "Roboto" }}><a onClick = {this.editBook.bind(this, book.id, book.title, book.desc, book.year,book.file)}>{book.title}</a></td>
+            <td style={{ textAlign: 'left' }} baseFontStyle={{ fontFamily: "Roboto" }}>{book.desc}</td>
+            <td style={{ textAlign: 'left' }} baseFontStyle={{ fontFamily: "Roboto" }}>{book.year}</td>
             <td>
             
               <Button color="danger" size="sm" onClick={this.deleteBook.bind(this, book.id)} >Delete</Button>
             </td>
+            <td ><img width="50%" src={book.file} alt="" /></td>
           </tr>
         )
       });
@@ -293,6 +300,15 @@ class App extends Component {
             }} />
           </FormGroup>
           <FormGroup>
+            <Label for="image">Image</Label>
+           <div><img width="50%" src={this.state.editBookData.file} alt="" /></div> 
+            <input type="file"
+                   id="image"
+                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} />
+            
+            
+          </FormGroup>
+          <FormGroup>
             <Label for="desc">Description</Label>
             <Input id="desc" value={this.state.editBookData.desc} onChange={(e) => {
               let { editBookData } = this.state;
@@ -330,6 +346,7 @@ class App extends Component {
                 <th>Desc</th>
                 <th>Year</th>
                 <th>Action</th>
+                <th>Image</th>
               </tr>
             </thead>
   

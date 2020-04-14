@@ -1,9 +1,14 @@
 import React from "react";
-import './App.css'; 
+import './App.css';
+import './NavLink.js';  
 import Search from './component/Example';
 import App1 from './component/App1';
+import Appupload3 from './component/appupload3';
 import App2 from './component/App2';
+import App3 from './component/Appviewonly3';
 import Search11 from './component/Search';
+import Login from './component/login';
+import Signup from './component/signup';
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,92 +45,7 @@ import {
 
 
 
-const Example = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
-
-  return (
-    <div>
-      <Navbar color="light" light expand="md"> 
-        <NavbarBrand href="/"><h1>EasyGo</h1></NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-            <NavLink exact to="/about" tag={RRNavLink}>About</NavLink> 
-            </NavItem>
-            <NavItem>
-              <NavLink href="http://royliao23.github.io/books-app">Customer</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Sales
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Report
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <NavItem>
-              <NavLink href="/components/">Supplier</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">Purchase</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Accounts
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Report
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <NavItem>
-              <NavLink href="/components/">Warehouse</NavLink>
-            </NavItem>
-            
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Setting
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Report
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          Simple Text
-        </Collapse>
-      </Navbar>
-    </div>
-  );
-}
 
 export default function BasicExample() {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,12 +58,12 @@ export default function BasicExample() {
         <NavbarBrand href="/"><h1>EasyGo</h1></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav  className="mr-auto" navbar>
             <NavItem>
-            <NavLink activeClassName = 'active-link' exact to="/"  tag={RRNavLink}>Home</NavLink>
+            <NavLink className="nav-link" activeClassName = 'active-link' exact to="/"  tag={RRNavLink}>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="http://royliao23.github.io/books-app">Customer</NavLink>
+            <NavLink tag={RRNavLink} className="nav-link" to="/accounts" activeClassName="active-link" >Accounts</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -162,11 +82,11 @@ export default function BasicExample() {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem>
-            <NavLink activeClassName = 'active-link' exact to="/suppliers"  tag={RRNavLink}>Purchase</NavLink>
+            <NavItem >
+            <NavLink exact to="/" className="inactive" activeClassName="active" tag={RRNavLink} >Dashboard</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">Purchase</NavLink>
+            <NavLink to="/" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}} tag={RRNavLink}>Home</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -206,23 +126,30 @@ export default function BasicExample() {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                User
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>
+                <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                <NavLink exact to="/signup" tag={RRNavLink}>Sign Up </NavLink>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                <NavLink exact to="/accounts" tag={RRNavLink}>Report</NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </Nav>
           Simple Text
         </Collapse>
       </Navbar>
     </div>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/accounts">Accounts</Link>
-          </li>
-          <li>
-            <Link to="/suppliers">Suppliers</Link>
-          </li>
-        </ul>
+        
 
         <hr />
 
@@ -243,6 +170,18 @@ export default function BasicExample() {
           <Route path="/suppliers">
             <Dashboard />
           </Route>
+          <Route path="/suppliers">
+            <Dashboard />
+            </Route>
+          <Route path="/suppliers">
+            <Dashboard />
+            </Route><Route path="/login">
+            <Loginm />
+          </Route>
+          
+          <Route path="/signup">
+            <Signupm />
+          </Route>
         </Switch>
       </div>
     </Router>
@@ -255,7 +194,7 @@ export default function BasicExample() {
 function Home() {
   return (
     <div>
- <App1 />
+ <App3 />
     </div>
   );
 }
@@ -263,7 +202,8 @@ function Home() {
 function About() {
   return (
     <div>
-        <Search11 />
+       
+       <Appupload3 />
       <h2>About roy</h2>
     </div>
   );
@@ -273,12 +213,31 @@ function Dashboard() {
   return (
     <div>
      <App2 />
+
+    </div>
+  );
+}
+
+function Signupm() {
+  return (
+    <div>
+     <Signup />
+
+    </div>
+  );
+}
+
+function Loginm() {
+  return (
+    <div>
+     <Login />
+
     </div>
   );
 }
 const style = {
-  
+  color: 'blue',
   "a:active": {
-    backgroundcolor: 'yellow'
+    color: 'yellow'
   }
 };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//import API from './Services/Api'
 import {  Input, FormGroup, Label, Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 //import titles from './component/title';
 //import Example from './Example';
@@ -10,9 +11,15 @@ import Footer from './Footer';
 import ParentComponent from './ParentComponent';
 import Search from './Search';
 
+
+
 const API_URL = 'https://royliao.pythonanywhere.com/api/article/'
 
 //const API_URL= 'https://royliao.pythonanywhere.com/snippets/'
+const api = 'https://royliao.pythonanywhere.com/api/article/'; 
+
+const token = '8132a3cfd0328194defb2f03cf1acbba5da87bda';       /*take only token and save in token variable*/
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -30,9 +37,9 @@ class App extends Component {
       title: '',
       desc: '',
       year:'',
-      file:''
+     
       },
-    headerInfo: {'content-type': 'application/json','Access-Control-Allow-Origin': "*" },
+    headerInfo: {'Authorization':'Token 8854d62680edf3c63c27ee8bf6d2c320cb902f51'},
     newBookModal: false,
     
     editBookData: {
@@ -60,7 +67,8 @@ class App extends Component {
       });
     }
     getsearch2 = () => {
-      axios.get(`${API_URL}?search=${this.state.searchkey}`).then((response) => {
+      axios.get(`${API_URL}?search=${this.state.searchkey}`,{
+        headers: localStorage.getItem('accesstoken')}).then((response) => {
         //  response.header("Access-Control-Allow-Origin", "*");
         //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
         this.setState({
@@ -76,7 +84,8 @@ class App extends Component {
     }
     addBook() {
      
-      axios.post(`${API_URL}`,  this.state.newBookData,this.state.headerInfo).then((response) => {
+      axios.post(`${API_URL}`,  this.state.newBookData,{
+        headers: this.state.headerInfo}).then((response) => {
         let { books } = this.state;
   
         books.push(response.data);
@@ -99,12 +108,13 @@ class App extends Component {
     }
 
     updateBook() {
-      let {id, title, desc, year,file} = this.state.editBookData;
+      let {id, title, desc, year} = this.state.editBookData;
       //alert(this.state.editBookData.id);
       
       axios.put(`${API_URL}` + this.state.editBookData.id+'/', {id,
-        title, desc, year, file
-      }, this.state.headerInfo).then((response) => {
+        title, desc, year
+      }, {
+        headers: this.state.headerInfo}).then((response) => {
         this._refreshBooks();
 
         
@@ -121,7 +131,8 @@ class App extends Component {
     }
 
     deleteBook(id) {
-      axios.delete(`${API_URL}` + id+'/').then((response) => {
+      axios.delete(`${API_URL}` + id+'/',{
+        headers: this.state.headerInfo}).then((response) => {
         this._refreshBooks();
         this.setState({
           mymessage:"Book ID "+id+ ' is deleted!'
@@ -156,7 +167,8 @@ class App extends Component {
     }
 
     getInfo = () => {
-      axios.get(`${API_URL}?search=${this.state.searchkey}`)
+      axios.get(`${API_URL}?search=${this.state.searchkey}`,{
+        headers: this.state.headerInfo})
     //  axios.get(`${API_URL}?api_key=${API_KEY}&prefix=${this.state.query}&limit=7`)
         .then(({ data }) => {
           this.setState({
@@ -166,11 +178,18 @@ class App extends Component {
         })
     }
 
+    
+
     UNSAFE_componentWillMount() {
       if(this.state.searchkey!==''||this.state.searchkey!==null) {
       //  link = `/api/article/?search=${this.searchkey}`
        // alert( `/api/article/?search=${this.state.searchkey}`);
-        axios.get(`${API_URL}?search=${this.state.searchkey}`).then((response) => {
+        axios.get(`${API_URL}?search=${this.state.searchkey}`,
+        
+        {
+          headers: this.state.headerInfo}
+        
+        ).then((response) => {
           //  response.header("Access-Control-Allow-Origin", "*");
           //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
           this.setState({
@@ -178,14 +197,14 @@ class App extends Component {
           })
         });
       }
+    }
      
-        
-      }
       UNSAFE_componentWillMount2() {
         if(this.state.searchkey!==''||this.state.searchkey!==null) {
         //  link = `/api/article/?search=${this.searchkey}`
          // alert( `/api/article/?search=${this.state.searchkey}`);
-          axios.get(`${API_URL}?search=${this.state.searchkey}`).then((response) => {
+          axios.get(`${API_URL}?search=${this.state.searchkey}`,{
+            headers: this.state.headerInfo}).then((response) => {
             //  response.header("Access-Control-Allow-Origin", "*");
             //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
             this.setState({
@@ -202,7 +221,8 @@ class App extends Component {
         }
       }
     _refreshBooks() {
-      axios.get(`${API_URL}`).then((response) => {
+      axios.get(`${API_URL}`,{
+        headers: this.state.headerInfo}).then((response) => {
         //  response.header("Access-Control-Allow-Origin", "*");
         //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
         this.setState({
@@ -298,23 +318,9 @@ class App extends Component {
          <ModalHeader toggle={this.toggleEditBookModal.bind(this)}>Edit a new book</ModalHeader>
          <ModalBody>
          <FormGroup>
-            <Label for="image">Image</Label>
+           
            <div><img width="50%" src={this.state.editBookData.file} alt="" /></div> 
-            <Input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={(e) => {
-                    let { editBookData } = this.state;
-                    this.setState({
-                      image: e.target.files[0]
-                      
-                    });
-                    
-                    
-      
-                    editBookData.file = this.state.image;
-      
-                    this.setState({ editBookData });
-            } }/>
+            
             
           </FormGroup>
          <FormGroup>

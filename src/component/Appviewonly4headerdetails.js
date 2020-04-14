@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//import API from './Services/Api'
 import {  Input, FormGroup, Label, Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 //import titles from './component/title';
 //import Example from './Example';
@@ -10,9 +11,15 @@ import Footer from './Footer';
 import ParentComponent from './ParentComponent';
 import Search from './Search';
 
+
+
 const API_URL = 'https://royliao.pythonanywhere.com/api/article/'
 
 //const API_URL= 'https://royliao.pythonanywhere.com/snippets/'
+const api = 'https://royliao.pythonanywhere.com/api/article/'; 
+
+const token = '8132a3cfd0328194defb2f03cf1acbba5da87bda';       /*take only token and save in token variable*/
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -30,9 +37,9 @@ class App extends Component {
       title: '',
       desc: '',
       year:'',
-      file:''
+     
       },
-    headerInfo: {'content-type': 'application/json','Access-Control-Allow-Origin': "*" },
+    headerInfo: {'Authorization': "Token 8132a3cfd0328194defb2f03cf1acbba5da87bda" },
     newBookModal: false,
     
     editBookData: {
@@ -99,11 +106,11 @@ class App extends Component {
     }
 
     updateBook() {
-      let {id, title, desc, year,file} = this.state.editBookData;
+      let {id, title, desc, year} = this.state.editBookData;
       //alert(this.state.editBookData.id);
       
       axios.put(`${API_URL}` + this.state.editBookData.id+'/', {id,
-        title, desc, year, file
+        title, desc, year
       }, this.state.headerInfo).then((response) => {
         this._refreshBooks();
 
@@ -166,11 +173,21 @@ class App extends Component {
         })
     }
 
+    
+
     UNSAFE_componentWillMount() {
       if(this.state.searchkey!==''||this.state.searchkey!==null) {
       //  link = `/api/article/?search=${this.searchkey}`
        // alert( `/api/article/?search=${this.state.searchkey}`);
-        axios.get(`${API_URL}?search=${this.state.searchkey}`).then((response) => {
+        axios.get(`${API_URL}?search=${this.state.searchkey}`,
+        
+        {
+          headers: {
+            'Authorization': 'Token 8132a3cfd0328194defb2f03cf1acbba5da87bda'
+          
+          }}
+        
+        ).then((response) => {
           //  response.header("Access-Control-Allow-Origin", "*");
           //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
           this.setState({
@@ -178,9 +195,8 @@ class App extends Component {
           })
         });
       }
+    }
      
-        
-      }
       UNSAFE_componentWillMount2() {
         if(this.state.searchkey!==''||this.state.searchkey!==null) {
         //  link = `/api/article/?search=${this.searchkey}`
@@ -298,23 +314,9 @@ class App extends Component {
          <ModalHeader toggle={this.toggleEditBookModal.bind(this)}>Edit a new book</ModalHeader>
          <ModalBody>
          <FormGroup>
-            <Label for="image">Image</Label>
+           
            <div><img width="50%" src={this.state.editBookData.file} alt="" /></div> 
-            <Input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={(e) => {
-                    let { editBookData } = this.state;
-                    this.setState({
-                      image: e.target.files[0]
-                      
-                    });
-                    
-                    
-      
-                    editBookData.file = this.state.image;
-      
-                    this.setState({ editBookData });
-            } }/>
+            
             
           </FormGroup>
          <FormGroup>
