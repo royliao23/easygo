@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//const API_URL = 'https://royliao.pythonanywhere.com/api/article/'
+
 class App extends Component {
 
   state = {
@@ -33,11 +33,17 @@ class App extends Component {
     form_data.append('desc', this.state.desc);
     form_data.append('year', this.state.year);
     let url = 'https://royliao.pythonanywhere.com/api/article/';
-    axios.post(url, form_data, {
+    let headers = {'content-type': 'multipart/form-data'};
+    
+    const head = 'Token '+localStorage.getItem('authcode');
+    
+    axios.post(url, form_data,{
+      
       headers: {
-        'content-type': 'multipart/form-data'
+        'content-type': 'multipart/form-data',
+        'Authorization': head,
       // "Content-Type":"multipart/form-data"
-      }
+      } 
     })
         .then(res => {
           console.log(res.data);
@@ -48,6 +54,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <form onSubmit={this.handleSubmit}>
           <p>
             <input type="text" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required/>

@@ -15,13 +15,15 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        alert('A username and password was submitted: ' + this.state.username + " " + this.state.password);
+       // alert('A username and password was submitted: ' + this.state.username + " " + this.state.password);
         event.preventDefault();
         try {
             axios.post(`${API_URL}`,  this.state).then((response) => {
-                alert(response.data.token);
+         //       alert(response.data.token);
 
-                localStorage.setItem('accesstoken',{'Authorization':"Token "+response.data.token},)
+                localStorage.setItem('accesstoken',{'Authorization':"Token "+response.data.token}
+                );
+                localStorage.setItem('authcode',response.data.token)
               });
             }
             
