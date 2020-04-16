@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 //import API from './Services/Api'
-import { MDBInput } from 'mdbreact';
 import {  Input, FormGroup, Label, Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 //import titles from './component/title';
 //import Example from './Example';
@@ -287,7 +286,7 @@ class App extends Component {
           </FormGroup>
           <FormGroup>
             <Label for="desc">Description</Label>
-            <MDBInput type="textarea" id="desc" value={this.state.newBookData.desc } onChange={(e) => {
+            <Input id="desc" value={this.state.newBookData.desc} onChange={(e) => {
               let { newBookData } = this.state;
 
               newBookData.desc = e.target.value;
@@ -337,7 +336,7 @@ class App extends Component {
           
           <FormGroup>
             <Label for="desc">Description</Label>
-            <MDBInput type="textarea" value={this.state.editBookData.desc}  rows="5" onChange={(e) => {
+            <Input id="desc" value={this.state.editBookData.desc} onChange={(e) => {
               let { editBookData } = this.state;
 
               editBookData.desc = e.target.value;
