@@ -3,7 +3,7 @@ import axios from 'axios';
 import Main from '../HeadLine';
 import Mainpage from '../signin.js';
 import  { Redirect } from 'react-router-dom'
-const API_URL = "http://royliao.pythonanywhere.com/api-token-auth/";
+const API_URL = "https://royliao.pythonanywhere.com/api-token-auth/";
 
 class Login extends Component {
     state ={
