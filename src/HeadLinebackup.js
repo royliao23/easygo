@@ -18,7 +18,6 @@ import {
   Link,
   NavLink as RRNavLink
 } from "react-router-dom";
-import Head2 from './signin.js';
 //import Example from "./Example";
 
 // This site has 3 pages, all of which are rendered
@@ -29,7 +28,7 @@ import Head2 from './signin.js';
 // through the site. This preserves the browser history,
 // making sure things like the back button and bookmarks
 // work properly.
-
+import { useState } from 'react';
 import {
   Collapse,
   Navbar,
@@ -46,25 +45,7 @@ import {
   //NavbarText,
 } from 'reactstrap';
 
-function Buttonswitch() {
-  // Declare a new state variable, which we'll call "count"
-  const [isLoggedIn, setIsLoggedIn] = useState('');
-  setIsLoggedIn(localStorage.getItem('authcode'));
-  if ({isLoggedIn}=='')
-  {
-  return (
-    <div>
-     <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
-    </div>)
-  }
 
-  else{
-    return (
-            <div>
-              <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
-           </div>
-         );}
-}
 
 const isLoggedIn = localStorage.getItem('authcode');
 let button;//switch for sign in or sign out
@@ -83,7 +64,6 @@ export default function BasicExample() {
   return (
     <Router>
       <div>
-   
       <Navbar color="light" light expand="md"> 
         <NavbarBrand href="/"><h1>EasyGo</h1></NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -175,8 +155,8 @@ export default function BasicExample() {
             </UncontrolledDropdown>
           </Nav>
           
-          <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
-          
+          {button}
+         
         </Collapse>
       </Navbar>
     </div>
@@ -291,15 +271,12 @@ function Logoutm() {
   localStorage.setItem('authcode','');
   return (
     <div>
-    you have logged out, Login <a href='/'>here </a>again.
-    
+    you have logged out
+
     </div>
   );
  
 }
-
-
-
 const style = {
   color: 'blue',
   "a:active": {

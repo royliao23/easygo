@@ -40,7 +40,7 @@ class App extends Component {
       year:'',
      
       },
-    headerInfo: {'Authorization':'Token 8854d62680edf3c63c27ee8bf6d2c320cb902f51'},
+    headerInfo:{Authorization: "Token "+localStorage.getItem('authcode')},
     newBookModal: false,
     
     editBookData: {
@@ -68,8 +68,7 @@ class App extends Component {
       });
     }
     getsearch2 = () => {
-      axios.get(`${API_URL}?search=${this.state.searchkey}`,{
-        headers: localStorage.getItem('accesstoken')}).then((response) => {
+      axios.get(`${API_URL}?search=${this.state.searchkey}`, {  headers: this.state.headerInfo}).then((response) => {
         //  response.header("Access-Control-Allow-Origin", "*");
         //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
         this.setState({
@@ -182,13 +181,13 @@ class App extends Component {
     
 
     UNSAFE_componentWillMount() {
+      
       if(this.state.searchkey!==''||this.state.searchkey!==null) {
       //  link = `/api/article/?search=${this.searchkey}`
        // alert( `/api/article/?search=${this.state.searchkey}`);
         axios.get(`${API_URL}?search=${this.state.searchkey}`,
         
-        {
-          headers: this.state.headerInfo}
+        {  headers: this.state.headerInfo}
         
         ).then((response) => {
           //  response.header("Access-Control-Allow-Origin", "*");
@@ -215,10 +214,8 @@ class App extends Component {
           
           
         }else
-        {window.location.reload(true);
-       alert("thh")
-       
-          
+        {
+          window.location.reload(true);
         }
       }
     _refreshBooks() {
@@ -270,7 +267,7 @@ class App extends Component {
         <Button id="btn26" class="btn btn-outline-success my-2 my-sm-0"   color="primary" style={{marginTop: 25}} onClick={this.UNSAFE_componentWillMount2.bind(this)}>Search</Button>
         </div></center> <Titles  name={this.state.mymessage} />
           
-        
+        <hr></hr>
   
         <Modal isOpen={this.state.newBookModal} toggle={this.toggleNewBookModal.bind(this)}>
           <ModalHeader toggle={this.toggleNewBookModal.bind(this)}>Add a new book</ModalHeader>

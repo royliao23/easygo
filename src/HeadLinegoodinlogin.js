@@ -175,8 +175,8 @@ export default function BasicExample() {
             </UncontrolledDropdown>
           </Nav>
           
-          <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
-          
+          Log Out
+        
         </Collapse>
       </Navbar>
     </div>
@@ -291,8 +291,8 @@ function Logoutm() {
   localStorage.setItem('authcode','');
   return (
     <div>
-    you have logged out, Login <a href='/'>here </a>again.
-    
+    you have logged out
+
     </div>
   );
  

@@ -25,45 +25,37 @@ class Login extends Component {
    
     handleSubmit(event) {
         
-     //   alert('A username and password was submitted: ' + this.state.username + " " + this.state.password);
+        alert('A username and password was submitted: ' + this.state.username + " " + this.state.password);
         event.preventDefault();
-        axios.post(`${API_URL}`,  this.state)
-    .then((response) => {
-  //      alert(response.data.token);
-        console.log(response.data.token);
-        localStorage.setItem('accesstoken',{'Authorization':"Token "+response.data.token}
+        try {
+            axios.post(`${API_URL}`,  this.state).then((response) => {
+                
+                
+                
+                
+                    alert("token:"+response.data.token);
+
+                    localStorage.setItem('accesstoken',{'Authorization':"Token "+response.data.token}
                     );
                     localStorage.setItem('authcode',response.data.token)
                     this.setState(() => ({ tok:localStorage.getItem('authcode') }));
-    //                alert(this.state.tok);
+                    alert(this.state.tok);
                     return this.state.tok;
-    })
-    .catch((error) => {
-        // Error 😨
-        if (error.response) {
-            /*
-             * The request was made and the server responded with a
-             * status code that falls out of the range of 2xx
-             */
-            alert(error.response.data.non_field_errors+" Please try with correct user name and password!");
+               
+              });
            
-          
-            console.log(error.response.data);
-            console.log(error.response.status);
-          
-        } else if (error.request) {
-            /*
-             * The request was made but no response was received, `error.request`
-             * is an instance of XMLHttpRequest in the browser and an instance
-             * of http.ClientRequest in Node.js
-             */
-            console.log(error.request);
-        } else {
-            // Something happened in setting up the request and triggered an Error
-            console.log('Error', error.message);
-        }
-        console.log(error.config);
-    });
+            }        
+            catch (error) {
+                if (error.response.status === 401) {
+                  if (error.response.data.rtnCode === 1) {
+                    console.log('Username not found!')
+                  }
+                } else if (error.response.status === 400) {
+                    console.log('Username1 not found!')
+                } else {
+                    console.log('Username3 not found!')
+                }
+            }
         
     }
 
