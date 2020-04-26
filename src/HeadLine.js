@@ -291,7 +291,7 @@ function Logoutm() {
   localStorage.setItem('authcode','');
   return (
     <div>
-    you have logged out, Login <a href='/'>here </a>again.
+    you have logged out, Login <a href='/books-app'>here </a>again.
     
     </div>
   );
