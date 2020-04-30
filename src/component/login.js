@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Main from '../HeadLine';
+import Landpage from './Counter';
 import Mainpage from '../signin.js';
 import  { Redirect } from 'react-router-dom'
 const API_URL = "https://royliao.pythonanywhere.com/api-token-auth/";
@@ -70,12 +71,12 @@ class Login extends Component {
     render() {
         return (
             <div>
-                
+               
                 { 
 
 (localStorage.getItem('authcode')=='')?( 
-
-    <form onSubmit={this.handleSubmit}>
+<div>
+<form onSubmit={this.handleSubmit}>
     <label>
         Username:
         <input name="username" type="text" value={this.state.username} onChange={this.handleChange}/>
@@ -85,11 +86,14 @@ class Login extends Component {
         <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
     </label>
     <input type="submit" value="Submit"/>
-</form>
+</form>  
+<Landpage />
 
+</div>
 ) : ( 
 
 <Main />
+
 
 ) 
 

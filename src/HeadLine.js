@@ -11,6 +11,7 @@ import Search11 from './component/Search';
 import Login from './component/login';
 //import Logout from './component/logout';
 import Signup from './component/signup';
+import Landpage from './component/Counter';
 import {
   BrowserRouter as Router,
   Switch,
@@ -273,7 +274,7 @@ function Logoutm() {
   return (
     <div>
     you have logged out, Login <a href='/books-app'>here </a>again.
-    
+    <Landpage />
     </div>
   );
  
