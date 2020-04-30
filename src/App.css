@@ -46,14 +46,7 @@
 
 .active {
   font-size: calc(10px + 2vmin);
-  background-color: chocolate;
-  color: red;
-  text-decoration: none;
-  opacity: 1;
-}
-.inactive {
-  font-size: calc(10px + 2vmin);
-  background-color: blue;
+  background-color: rgb(84, 30, 210);
   color: red;
   text-decoration: none;
   opacity: 1;
