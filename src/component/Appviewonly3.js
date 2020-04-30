@@ -193,7 +193,7 @@ class App extends Component {
           //  response.header("Access-Control-Allow-Origin", "*");
           //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
           this.setState({
-            books: response.data
+            books: response.data.reverse()
           })
         });
       }
@@ -208,14 +208,14 @@ class App extends Component {
             //  response.header("Access-Control-Allow-Origin", "*");
             //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
             this.setState({
-              books: response.data
+              books: response.data.reverse()
             })
           });
           
           
         }else
         {
-          window.location.reload(true);
+          window.location.reload(false);
         }
       }
     _refreshBooks() {
@@ -224,7 +224,7 @@ class App extends Component {
         //  response.header("Access-Control-Allow-Origin", "*");
         //  response.header("Access-Control-Allow-Headers", "X-Requested-With");
         this.setState({
-          books: response.data
+          books: response.data.reverse()
         })
       });
     }

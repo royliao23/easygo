@@ -66,17 +66,17 @@ function Buttonswitch() {
          );}
 }
 
-const isLoggedIn = localStorage.getItem('authcode');
-let button;//switch for sign in or sign out
-    if (isLoggedIn=='') {
+
+
+export default function BasicExample() {
+  const isLoggedIn = localStorage.getItem('authcode');
+  let button;//switch for sign in or sign out
+    if (isLoggedIn==='') {
      button= <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
     //  button = <LogoutButton onClick={this.handleLogoutClick} />;
     } else {
      button= <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
     }
-
-
-export default function BasicExample() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -85,7 +85,7 @@ export default function BasicExample() {
       <div>
    
       <Navbar color="light" light expand="md"> 
-        <NavbarBrand href="/"><h1>EasyGo</h1></NavbarBrand>
+        <NavbarBrand href="/books-app"><h1>EasyGo</h1></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav  className="mr-auto" navbar>
@@ -113,28 +113,12 @@ export default function BasicExample() {
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem >
-            <NavLink exact to="/" className="inactive" activeClassName="active" tag={RRNavLink} >Dashboard</NavLink>
+            <NavLink exact to="/" className="inactive" activeClassName="active" tag={RRNavLink} >Suppliers</NavLink>
             </NavItem>
             <NavItem>
-            <NavLink to="/" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}} tag={RRNavLink}>Home</NavLink>
+            <NavLink to="/" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}} tag={RRNavLink}>Purchase</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Accounts
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                <NavLink exact to="/suppliers" tag={RRNavLink}>About1</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                <NavLink exact to="/suppliers" tag={RRNavLink}>About1</NavLink>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                <NavLink exact to="/suppliers" tag={RRNavLink}>About1</NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            
             <NavItem>
             <NavLink exact to="/suppliers" activeClassName = 'active-link' tag={RRNavLink}>Warehouse</NavLink>
             </NavItem>
@@ -174,8 +158,7 @@ export default function BasicExample() {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          
-          <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
+          {button}
           
         </Collapse>
       </Navbar>
@@ -202,8 +185,8 @@ export default function BasicExample() {
           <Route path="/suppliers">
             <Dashboard />
           </Route>
-          <Route path="/suppliers">
-            <Dashboard />
+          <Route path="/books-app">
+            <Home />
             </Route>
           <Route path="/suppliers">
             <Dashboard />
