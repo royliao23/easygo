@@ -113,11 +113,9 @@ export default function BasicExample() {
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem >
-            <NavLink exact to="/" className="inactive" activeClassName="active" tag={RRNavLink} >Suppliers</NavLink>
+            <NavLink exact to="/books-app" className="inactive" activeClassName="active" tag={RRNavLink} >Suppliers</NavLink>
             </NavItem>
-            <NavItem>
-            <NavLink to="/" className="inactive" activeClassName="active"  tag={RRNavLink}>Purchase</NavLink>
-            </NavItem>
+            
             
             <NavItem>
             <NavLink exact to="/suppliers" className="inactive" activeClassName="active" tag={RRNavLink}>Warehouse</NavLink>
