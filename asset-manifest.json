@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/books-app/static/css/main.21b0654c.chunk.css",
+    "main.css": "/books-app/static/css/main.09f84c3d.chunk.css",
     "main.js": "/books-app/static/js/main.3d27a5d9.chunk.js",
     "main.js.map": "/books-app/static/js/main.3d27a5d9.chunk.js.map",
     "runtime-main.js": "/books-app/static/js/runtime-main.02a87011.js",
@@ -9,10 +9,10 @@
     "static/js/2.eec71621.chunk.js": "/books-app/static/js/2.eec71621.chunk.js",
     "static/js/2.eec71621.chunk.js.map": "/books-app/static/js/2.eec71621.chunk.js.map",
     "index.html": "/books-app/index.html",
-    "precache-manifest.18c654ea38ca1baadf3f721290e73f54.js": "/books-app/precache-manifest.18c654ea38ca1baadf3f721290e73f54.js",
+    "precache-manifest.7f65068d1e9285e9d6b2e67529472523.js": "/books-app/precache-manifest.7f65068d1e9285e9d6b2e67529472523.js",
     "service-worker.js": "/books-app/service-worker.js",
     "static/css/2.6e1be5aa.chunk.css.map": "/books-app/static/css/2.6e1be5aa.chunk.css.map",
-    "static/css/main.21b0654c.chunk.css.map": "/books-app/static/css/main.21b0654c.chunk.css.map",
+    "static/css/main.09f84c3d.chunk.css.map": "/books-app/static/css/main.09f84c3d.chunk.css.map",
     "static/js/2.eec71621.chunk.js.LICENSE.txt": "/books-app/static/js/2.eec71621.chunk.js.LICENSE.txt",
     "static/media/mdb.css": "/books-app/static/media/arrow_right.8ef6a08c.svg",
     "static/media/all.min.css": "/books-app/static/media/fa-solid-900.ec763292.svg"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.02a87011.js",
     "static/css/2.6e1be5aa.chunk.css",
     "static/js/2.eec71621.chunk.js",
-    "static/css/main.21b0654c.chunk.css",
+    "static/css/main.09f84c3d.chunk.css",
     "static/js/main.3d27a5d9.chunk.js"
   ]
 }
