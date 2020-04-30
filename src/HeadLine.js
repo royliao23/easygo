@@ -85,7 +85,7 @@ export default function BasicExample() {
       <div>
    
       <Navbar color="light" light expand="md"> 
-        <NavbarBrand href="/books-app"><h1>EasyGo</h1></NavbarBrand>
+        <NavbarBrand href="/books-app" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}}><h1>EasyGo</h1></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav  className="mr-auto" navbar>
@@ -116,7 +116,7 @@ export default function BasicExample() {
             <NavLink exact to="/" className="inactive" activeClassName="active" tag={RRNavLink} >Suppliers</NavLink>
             </NavItem>
             <NavItem>
-            <NavLink to="/" className="inactive" activeClassName="active" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}} tag={RRNavLink}>Purchase</NavLink>
+            <NavLink to="/" className="inactive" activeClassName="active"  tag={RRNavLink}>Purchase</NavLink>
             </NavItem>
             
             <NavItem>
@@ -124,7 +124,7 @@ export default function BasicExample() {
             </NavItem>
             
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
+              <DropdownToggle nav caret >
                 Setting
               </DropdownToggle>
               <DropdownMenu right>
