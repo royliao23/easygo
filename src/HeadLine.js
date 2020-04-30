@@ -90,10 +90,10 @@ export default function BasicExample() {
         <Collapse isOpen={isOpen} navbar>
           <Nav  className="mr-auto" navbar>
             <NavItem>
-            <NavLink className="nav-link" activeClassName = 'active-link' exact to="/"  tag={RRNavLink}>Home</NavLink>
+            <NavLink className="inactive" activeClassName="active" exact to="/"  tag={RRNavLink}>Home</NavLink>
             </NavItem>
             <NavItem>
-            <NavLink tag={RRNavLink} className="nav-link" to="/accounts" activeClassName="active-link" >Accounts</NavLink>
+            <NavLink tag={RRNavLink}  to="/accounts" className="inactive" activeClassName="active" >Accounts</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -116,11 +116,11 @@ export default function BasicExample() {
             <NavLink exact to="/" className="inactive" activeClassName="active" tag={RRNavLink} >Suppliers</NavLink>
             </NavItem>
             <NavItem>
-            <NavLink to="/" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}} tag={RRNavLink}>Purchase</NavLink>
+            <NavLink to="/" className="inactive" activeClassName="active" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}} tag={RRNavLink}>Purchase</NavLink>
             </NavItem>
             
             <NavItem>
-            <NavLink exact to="/suppliers" activeClassName = 'active-link' tag={RRNavLink}>Warehouse</NavLink>
+            <NavLink exact to="/suppliers" className="inactive" activeClassName="active" tag={RRNavLink}>Warehouse</NavLink>
             </NavItem>
             
             <UncontrolledDropdown nav inNavbar>
