@@ -86,7 +86,7 @@ export default function BasicExample() {
       <div>
    
       <Navbar color="light" light expand="md"> 
-        <NavbarBrand href="/books-app" style={{ textDecoration: 'none'}} activeStyle={{color: 'red', fontWeight: "bold",textDecoration: 'none'}}><h1>EasyGo</h1></NavbarBrand>
+        <NavbarBrand href="/books-app" ><h1>EasyGo</h1></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav  className="mr-auto" navbar>
@@ -157,8 +157,9 @@ export default function BasicExample() {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          {button}
           
+          <NavLink onClick={()=>{localStorage.setItem('accesstoken',{'Authorization':"Token "});
+  localStorage.setItem('authcode','');window.location.reload(true)}}>Log out</NavLink>
         </Collapse>
       </Navbar>
     </div>
@@ -271,12 +272,19 @@ const ProtectedComponent = () => {
 function Logoutm() {
   localStorage.setItem('accesstoken',{'Authorization':"Token "});
   localStorage.setItem('authcode','');
+ 
   return (
     <div>
     you have logged out, Login <a href='/books-app'>here </a>again.
-    <Landpage />
+    <div>
+    
+   Thank you to web surf here. This is the logout page content for guests!
+   
+    </div>
     </div>
   );
+ 
+ 
  
 }
 

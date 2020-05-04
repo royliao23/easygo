@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Main from '../HeadLine';
 import Landpage from './Counter';
+import Signup from './signup';
 import Mainpage from '../signin.js';
 import  { Redirect } from 'react-router-dom'
 const API_URL = "https://royliao.pythonanywhere.com/api-token-auth/";
 
 class Login extends Component {
     state ={
-        tok:localStorage.getItem('authcode')
-
+        tok:localStorage.getItem('authcode'),
+        signupform:''
 
     }
     constructor(props) {
@@ -19,7 +20,11 @@ class Login extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    UNSAFE_componentWillMount() {
+        this.setState({signupform: <div>
+            </div>});
+        
+      }
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
     }
@@ -69,10 +74,12 @@ class Login extends Component {
     }
 
     render() {
+        let form1=this.state.signupform;
         return (
             <div>
-               
-                { 
+              
+
+                {
 
 (localStorage.getItem('authcode')=='')?( 
 <div>
@@ -87,7 +94,11 @@ class Login extends Component {
     </label>
     <input type="submit" value="Submit"/>
 </form>  
+<div style={{marginTop:20}}>not a user? You can <span style={{color:'blue'}} onClick={()=>{this.setState({signupform: <div>User Register<Signup /></div>});}}>click here to sign up</span>
+<div style={{marginTop:20}}>{form1}</div>
 <Landpage />
+</div>
+
 
 </div>
 ) : ( 

@@ -40,6 +40,7 @@ class App extends Component {
       year:'',
      
       },
+    
     headerInfo:{Authorization: "Token "+localStorage.getItem('authcode')},
     newBookModal: false,
     

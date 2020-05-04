@@ -25,11 +25,10 @@ class Counter extends Component {
   render() {
     return (
       <div>
-       
+        not a user? <a href="/signup">Sigh up</a> 
+        
        <h1>count - {this.state.count}</h1>
        <Button onClick={()=>this.increase()}>increase</Button>
-      
-      
       
       </div>
     );
