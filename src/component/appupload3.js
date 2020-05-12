@@ -47,6 +47,10 @@ class App extends Component {
     })
         .then(res => {
           console.log(res.data);
+          this.setState({ image:'' });
+          this.setState({ title:'' });
+          this.setState({ desc:'' });
+          this.setState({ year:'' });
         })
         .catch(err => console.log(err))
   };

@@ -7,6 +7,7 @@ import App1 from './component/App1';
 import Appupload3 from './component/appupload3';
 import App2 from './component/App2';
 import App3 from './component/Appviewonly3';
+import Appaddonly from './component/Appaddonly';
 import Search11 from './component/Search';
 import Login from './component/login';
 //import Logout from './component/logout';
@@ -71,23 +72,47 @@ function Buttonswitch() {
 
 export default function BasicExample(props) {
   //const u = localStorage.getItem('usern');
+  //97 - add 98 -change 100 -view 99-can delete 
+  let tabview = ((localStorage.getItem('permito').includes(98))?
+  (<UncontrolledDropdown nav inNavbar>
+    <DropdownToggle nav caret>
+      Setting
+    </DropdownToggle>
+    <DropdownMenu right>
+      <DropdownItem>
+      <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
+      </DropdownItem>
+      <DropdownItem>
+      <NavLink exact to="/signup" tag={RRNavLink}>Sign Up </NavLink>
+      </DropdownItem>
+      <DropdownItem divider />
+      <DropdownItem>
+      <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
+      </DropdownItem>
+    </DropdownMenu>
+  </UncontrolledDropdown>
   
-
-  const isLoggedIn = localStorage.getItem('authcode');
-  let button;//switch for sign in or sign out
-    if (isLoggedIn==='') {
-     button= <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
-    //  button = <LogoutButton onClick={this.handleLogoutClick} />;
-    } else {
-     button= <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
-    }
+  ):
+  (''
+    
+  )
+  );
+  
+  
+  const addmainview = ((localStorage.getItem('permito').includes(97))?(<div>add allowed </div>):(<div>{props.permit}not allowed</div>));
+  const changemainview = ((localStorage.getItem('permito').includes(98))?(<div>change allowed</div>):(<div>{props.permit}not allowed</div>));
+  const viewmainview = ((localStorage.getItem('permito').includes(100))?(<div>view allowed</div>):(<div>{props.permit}not allowed</div>));
+  const deletemainview = ((localStorage.getItem('permito').includes(99))?(<div>delete allowed</div>):(<div>{props.permit}not allowed</div>));
+  //const mainview = ((props.permit.indexOf(34))?(<div>{props.permit}allowed</div>):(<div>not allowed</div>));
+  
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
+  
   return (
     <Router>
       <div>
-   
+        
+       
       <Navbar color="light" light expand="md"> 
         <NavbarBrand href="/books-app" ><h1>EasyGo</h1></NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -124,41 +149,9 @@ export default function BasicExample(props) {
             <NavItem>
             <NavLink exact to="/suppliers" className="inactive" activeClassName="active" tag={RRNavLink}>Warehouse</NavLink>
             </NavItem>
+            {tabview}
             
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret >
-                Setting
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                <NavLink exact to="/suppliers" tag={RRNavLink}>About1</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                <NavLink exact to="/suppliers" tag={RRNavLink}>About1</NavLink>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                <NavLink exact to="/accounts" tag={RRNavLink}>Report</NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                User
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                <NavLink exact to="/login" tag={RRNavLink}>Sign in</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                <NavLink exact to="/signup" tag={RRNavLink}>Sign Up </NavLink>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                <NavLink exact to="/logout" tag={RRNavLink}>Sign Out</NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+           
           </Nav>
           
           <NavLink onClick={()=>{localStorage.setItem('accesstoken',{'Authorization':"Token "});
@@ -218,15 +211,24 @@ export default function BasicExample(props) {
 // in your app.
 
 function Home() {
+  let mainview = ((localStorage.getItem('permito').includes(98))?(<div><App3 /></div>):
+  (
+    ((localStorage.getItem('permito').includes(97))?(<div><Appaddonly /> </div>):
+    (<div>Ding !not allowed</div>))
+  )
+  );
   return (
+    
     <div>
- <App3 />
+ 
+{mainview}
     </div>
   );
 }
 
 function About() {
   return (
+
     <div>
        
        <Appupload3 />
@@ -236,14 +238,20 @@ function About() {
 }
 
 function Dashboard() {
+  let mainview = ((localStorage.getItem('permito').includes(98))?(<div><App3 /></div>):
+  (
+    ((localStorage.getItem('permito').includes(97))?(<div><Appaddonly /> </div>):
+    (<div>Ding !not allowed</div>))
+  )
+  );
   return (
+    
     <div>
-     <App2 />
-
+ 
+{mainview}
     </div>
   );
-}
-
+  }
 function Signupm() {
   return (
     <div>

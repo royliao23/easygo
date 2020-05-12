@@ -10,9 +10,9 @@ class Counter extends Component {
 
     }
   }
-  increase(){
+  increase(num){
       this.setState({
-          count:this.state.count+1},()=>{console.log("count",this.state.count)}
+          count:this.state.count+num},()=>{console.log("count",this.state.count)}
       )
   }
   tosignup(){
@@ -27,7 +27,7 @@ class Counter extends Component {
       <div>
        
        <h1>count - {this.state.count}</h1>
-       <Button onClick={()=>this.increase()}>increase</Button>
+       <Button onClick={()=>this.increase(5)}>increase</Button>
       
       
       
