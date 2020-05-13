@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/books-app/static/css/main.dbe9779d.chunk.css",
-    "main.js": "/books-app/static/js/main.0140bba1.chunk.js",
-    "main.js.map": "/books-app/static/js/main.0140bba1.chunk.js.map",
-    "runtime-main.js": "/books-app/static/js/runtime-main.02a87011.js",
-    "runtime-main.js.map": "/books-app/static/js/runtime-main.02a87011.js.map",
-    "static/css/2.6e1be5aa.chunk.css": "/books-app/static/css/2.6e1be5aa.chunk.css",
-    "static/js/2.a4f3ce68.chunk.js": "/books-app/static/js/2.a4f3ce68.chunk.js",
-    "static/js/2.a4f3ce68.chunk.js.map": "/books-app/static/js/2.a4f3ce68.chunk.js.map",
-    "index.html": "/books-app/index.html",
-    "precache-manifest.ab96e417c58f29ddb566374e5b362091.js": "/books-app/precache-manifest.ab96e417c58f29ddb566374e5b362091.js",
-    "service-worker.js": "/books-app/service-worker.js",
-    "static/css/2.6e1be5aa.chunk.css.map": "/books-app/static/css/2.6e1be5aa.chunk.css.map",
-    "static/css/main.dbe9779d.chunk.css.map": "/books-app/static/css/main.dbe9779d.chunk.css.map",
-    "static/js/2.a4f3ce68.chunk.js.LICENSE.txt": "/books-app/static/js/2.a4f3ce68.chunk.js.LICENSE.txt",
-    "static/media/mdb.css": "/books-app/static/media/arrow_right.8ef6a08c.svg",
-    "static/media/all.min.css": "/books-app/static/media/fa-solid-900.ec763292.svg"
+    "main.css": "/easygo/static/css/main.dbe9779d.chunk.css",
+    "main.js": "/easygo/static/js/main.dee8e9da.chunk.js",
+    "main.js.map": "/easygo/static/js/main.dee8e9da.chunk.js.map",
+    "runtime-main.js": "/easygo/static/js/runtime-main.550865e0.js",
+    "runtime-main.js.map": "/easygo/static/js/runtime-main.550865e0.js.map",
+    "static/css/2.298d8841.chunk.css": "/easygo/static/css/2.298d8841.chunk.css",
+    "static/js/2.a4f3ce68.chunk.js": "/easygo/static/js/2.a4f3ce68.chunk.js",
+    "static/js/2.a4f3ce68.chunk.js.map": "/easygo/static/js/2.a4f3ce68.chunk.js.map",
+    "index.html": "/easygo/index.html",
+    "precache-manifest.f98d37429f291942bed43a78d8e3193d.js": "/easygo/precache-manifest.f98d37429f291942bed43a78d8e3193d.js",
+    "service-worker.js": "/easygo/service-worker.js",
+    "static/css/2.298d8841.chunk.css.map": "/easygo/static/css/2.298d8841.chunk.css.map",
+    "static/css/main.dbe9779d.chunk.css.map": "/easygo/static/css/main.dbe9779d.chunk.css.map",
+    "static/js/2.a4f3ce68.chunk.js.LICENSE.txt": "/easygo/static/js/2.a4f3ce68.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/easygo/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/all.min.css": "/easygo/static/media/fa-solid-900.ec763292.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.02a87011.js",
-    "static/css/2.6e1be5aa.chunk.css",
+    "static/js/runtime-main.550865e0.js",
+    "static/css/2.298d8841.chunk.css",
     "static/js/2.a4f3ce68.chunk.js",
     "static/css/main.dbe9779d.chunk.css",
-    "static/js/main.0140bba1.chunk.js"
+    "static/js/main.dee8e9da.chunk.js"
   ]
 }
