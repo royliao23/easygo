@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "59168664d917be16a3a6878031f7c7f2",
+    "revision": "a8c09be7d2faa71e9d0ab3781a94f9e3",
     "url": "/books-app/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/books-app/static/css/2.6e1be5aa.chunk.css"
   },
   {
-    "revision": "db5d7c582127b3d843b1",
+    "revision": "ba47b81da9bbcbf6e5b6",
     "url": "/books-app/static/css/main.dbe9779d.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/books-app/static/js/2.8f21f118.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "db5d7c582127b3d843b1",
-    "url": "/books-app/static/js/main.4e337c4b.chunk.js"
+    "revision": "ba47b81da9bbcbf6e5b6",
+    "url": "/books-app/static/js/main.a675c521.chunk.js"
   },
   {
     "revision": "0516a4b05870c5bc4c3b",
